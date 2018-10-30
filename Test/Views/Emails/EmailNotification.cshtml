@@ -1,0 +1,13 @@
+﻿@{
+    Layout = null;
+}
+
+@model Test.Models.EmailNotification
+To: @Model.To
+From: mailer@example.com
+Subject: New comment posted
+
+Hello,
+There is a new comment from @Model.UserName:
+
+@Model.RoutName
