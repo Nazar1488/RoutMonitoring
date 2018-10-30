@@ -1,0 +1,46 @@
+﻿@model Test.Models.Monitoring
+@if (Model.IsInProccess)
+{
+    <li class="list-group-item list-group-item-warning">
+        <div class="row">
+            <div align="left" class="col-md-10">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                <b>In proccess</b>
+            </div>
+            <div align="right" class=" col-md-2">
+                <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete","Monitoring", new { id = Model.Id })"></a>
+            </div>
+        </div>
+        <p>@Model.Rout</p>
+    </li>
+}
+else if (Model.IsSuccessed)
+{
+    <li class="list-group-item list-group-item-success">
+        <div class="row">
+            <div class="col-md-10" align="left">
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                <b>Rout was founded!</b>
+            </div>
+            <div align="right" class=" col-md-2">
+                <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete","Monitoring", new { id = Model.Id })"></a>
+            </div>
+        </div>
+        <p>@Model.Rout</p>
+    </li>
+}
+else
+{
+    <li class="list-group-item list-group-item-danger">
+        <div class="row">
+            <div class="col-md-10" align="left">
+                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                <b>Rout no found :(</b>
+            </div>
+            <div align="right" class=" col-md-2">
+                <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete","Monitoring", new { id = Model.Id })"></a>
+            </div>
+        </div>
+        <p>@Model.Rout</p>
+    </li>
+}

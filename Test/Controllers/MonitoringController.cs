@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Hangfire;
 using Microsoft.AspNet.Identity;
 using Test.Models;
@@ -15,7 +14,7 @@ namespace Test.Controllers
         {
             _monitoringRepository = new MonitoringRepository();
         }
-        // GET: Monitoring
+
         [Authorize(Roles = "User")]
         public ActionResult Index()
         {
@@ -27,14 +26,12 @@ namespace Test.Controllers
             return View();
         }
 
-        // GET: Monitoring/Create
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
-        //// POST: Monitoring/Create
         [HttpPost]
         public ActionResult Create(Monitoring monitoring)
         {
@@ -51,48 +48,22 @@ namespace Test.Controllers
             }
         }
 
-        //// GET: Monitoring/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var b = _monitoringRepository.Get(id);
+            if (b == null)
+            {
+                return HttpNotFound();
+            }
 
-        //// POST: Monitoring/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
+            if (b.IsInProccess)
+            {
+                RecurringJob.RemoveIfExists(b.Id.ToString());
+            }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: Monitoring/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Monitoring/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            _monitoringRepository.Delete(b.Id);
+            return RedirectToAction("Index");
+        }
     }
 }

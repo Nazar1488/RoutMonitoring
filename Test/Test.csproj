@@ -296,6 +296,7 @@
     <Content Include="Views\Emails\EmailNotification.cshtml" />
     <Content Include="Views\Monitoring\Create.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Monitoring.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

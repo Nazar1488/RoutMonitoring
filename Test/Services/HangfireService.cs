@@ -7,11 +7,11 @@ namespace Test.Services
     {
         private static int _testCount;
 
-        private static readonly MonitoringRepository _monitoringRepository;
+        private static readonly MonitoringRepository MonitoringRepository;
 
         static HangfireService()
         {
-            _monitoringRepository = new MonitoringRepository();
+            MonitoringRepository = new MonitoringRepository();
         }
 
         public static void CheckTickets(Monitoring monitoring)
@@ -20,7 +20,7 @@ namespace Test.Services
             {
                 monitoring.IsSuccessed = true;
                 monitoring.IsInProccess = false;
-                _monitoringRepository.Update(monitoring);
+                MonitoringRepository.Update(monitoring);
                 RecurringJob.RemoveIfExists(monitoring.Id.ToString());
                 _testCount = 0;
             }
