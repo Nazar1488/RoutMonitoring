@@ -41,7 +41,7 @@ namespace Test.Models
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var sqlQuery = "INSERT INTO Monitorings (Type, UserId, IsSuccessed, IsInProccess, Rout) VALUES(@Type, @UserId, @IsSuccessed, @IsInProccess, @Rout); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var sqlQuery = "INSERT INTO Monitorings (Type, UserId, IsSuccessed, IsInProccess, Rout, [From], [To], Date, Time, SeatType) VALUES(@Type, @UserId, @IsSuccessed, @IsInProccess, @Rout, @From, @To, @Date, @Time, @SeatType); SELECT CAST(SCOPE_IDENTITY() as int)";
                 int? monitoringId = db.Query<int>(sqlQuery, monitoring).FirstOrDefault();
                 monitoring.Id = monitoringId.Value;
             }
@@ -53,7 +53,7 @@ namespace Test.Models
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var sqlQuery = "UPDATE Monitorings SET Type = @Type, UserId = @UserId, IsSuccessed = @IsSuccessed, IsInProccess = @IsInProccess, Rout = @Rout WHERE Id = @Id";
+                var sqlQuery = "UPDATE Monitorings SET Type = @Type, UserId = @UserId, IsSuccessed = @IsSuccessed, IsInProccess = @IsInProccess, Rout = @Rout, [From] = @From, [To] = @To, Date = @Date, Time = @Time, SeatType = @SeatType WHERE Id = @Id";
                 db.Execute(sqlQuery, monitoring);
             }
         }

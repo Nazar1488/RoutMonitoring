@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Hangfire;
 using Microsoft.AspNet.Identity;
+using test.Models.Railway;
 using Test.Models;
 using Test.Services;
 
@@ -38,6 +40,7 @@ namespace Test.Controllers
             try
             {
                 monitoring.UserId = User.Identity.GetUserId();
+                monitoring.UserEmail = User.Identity.GetUserName();
                 monitoring = _monitoringRepository.Create(monitoring);
                 RecurringJob.AddOrUpdate(monitoring.Id.ToString() ,() => HangfireService.CheckTickets(monitoring), Cron.Minutely);
                 return RedirectToAction("Index");
@@ -64,6 +67,12 @@ namespace Test.Controllers
 
             _monitoringRepository.Delete(b.Id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Finded()
+        {
+            return View();
         }
     }
 }

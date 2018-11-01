@@ -1,0 +1,21 @@
+﻿@model test.Models.Railway.Train
+<li class="list-group-item list-group-item-info">
+    <div align="left">
+        <p><b>@Model.From.StationTrain - @Model.To.StationTrain</b></p>
+        <p>Відправляється з <b>@Model.From.StationName</b> о <b>@Model.From.Time</b></p>
+        <p>Прибуває до <b>@Model.To.StationName</b> о <b>@Model.To.Time</b></p>
+        <p>Час у дорозі: <b>@Model.TravelTime</b></p>
+    </div>
+    <div align="center">
+        <p><b>Вільні місця</b></p>
+    </div>
+    <ul class="list-group">
+        @foreach (var p in Model.Types)
+        {
+            <li class="list-group-item">
+                <span class="badge">@p.Places</span>
+                @p.Title
+            </li>
+        }
+    </ul>
+</li>

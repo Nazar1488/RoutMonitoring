@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using Hangfire;
 using Hangfire.Dashboard;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using Test.Models;
@@ -14,11 +17,12 @@ namespace Test
         {
             ConfigureAuth(app);
             GlobalConfiguration.Configuration
-                .UseSqlServerStorage(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-Test-20181029110102;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                .UseSqlServerStorage(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
             //app.UseHangfireDashboard("/hangfire", new DashboardOptions
             //{
             //    Authorization = new[] {new DashboardAuthorizationFilter()}
             //});
+          
             app.UseHangfireDashboard();
             app.UseHangfireServer();
         }

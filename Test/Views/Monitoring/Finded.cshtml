@@ -1,0 +1,15 @@
+﻿@using System.Web.Mvc.Html
+@model List<test.Models.Railway.Train>
+
+@{
+    ViewBag.Title = "Finded trains";
+}
+
+<div class="row" align="center">
+    <ul class="list-group">
+    @foreach (var m in Model)
+    {
+        @Html.Partial("TrainInfo", m);
+    }
+    </ul>
+</div>

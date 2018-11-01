@@ -11,7 +11,16 @@
                 <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete","Monitoring", new { id = Model.Id })"></a>
             </div>
         </div>
-        <p>@Model.Rout</p>
+        <div align="center">
+            <p><b>@Model.Rout</b></p>
+        </div>
+        <div>
+            <p>From: <b>@Model.From</b></p>
+            <p>To: <b>@Model.To</b></p>
+            <p>Date: <b>@Model.Date</b></p>
+            <p>Time: <b>@Model.Time</b></p>
+            <p>Type: <b>@Model.SeatType</b></p>
+        </div>
     </li>
 }
 else if (Model.IsSuccessed)
@@ -20,13 +29,22 @@ else if (Model.IsSuccessed)
         <div class="row">
             <div class="col-md-10" align="left">
                 <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                <b>Rout was founded!</b>
+                <b>Rout was found!</b>
             </div>
             <div align="right" class=" col-md-2">
-                <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete","Monitoring", new { id = Model.Id })"></a>
+                <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete", "Monitoring", new {id = Model.Id})"></a>
             </div>
         </div>
-        <p>@Model.Rout</p>
+        <div align="center">
+            <p><b>@Model.Rout</b></p>
+        </div>
+        <div>
+            <p>From: <b>@Model.From</b></p>
+            <p>To: <b>@Model.To</b></p>
+            <p>Date: <b>@Model.Date</b></p>
+            <p>Time: <b>@Model.Time</b></p>
+            <p>Type: <b>@Model.SeatType</b></p>
+        </div>
     </li>
 }
 else
@@ -35,12 +53,21 @@ else
         <div class="row">
             <div class="col-md-10" align="left">
                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                <b>Rout no found :(</b>
+                <b>Rout not found :(</b>
             </div>
             <div align="right" class=" col-md-2">
                 <a class="glyphicon glyphicon glyphicon-remove" href="@Url.Action("Delete","Monitoring", new { id = Model.Id })"></a>
             </div>
         </div>
-        <p>@Model.Rout</p>
+        <div align="center">
+            <p><b>@Model.Rout</b></p>
+        </div>
+        <div>
+            <p>From: <b>@Model.From</b></p>
+            <p>To: <b>@Model.To</b></p>
+            <p>Date: <b>@Model.Date</b></p>
+            <p>Time: <b>@Model.Time</b></p>
+            <p>Type: <b>@Model.SeatType</b></p>
+        </div>
     </li>
 }
